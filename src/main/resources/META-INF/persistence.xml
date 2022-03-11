@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="FSOM_PU" transaction-type="JTA">
+    <jta-data-source>java:/jboss/datasources/PostgresDS</jta-data-source>
+    <class>ru.rt.fsom.wfc.wfcservice.data.tickets.TicketAttaches</class>
+    <class>ru.rt.fsom.wfc.wfcservice.data.tickets.TicketData</class>
+    <class>ru.rt.fsom.wfc.wfcservice.data.tickets.TicketGroup</class>
+    <class>ru.rt.fsom.wfc.wfcservice.data.tickets.TicketParam</class>
+    <class>ru.rt.fsom.wfc.wfcservice.service.users.User</class>
+    <class>ru.rt.fsom.wfc.wfcservice.service.users.UserSettings</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+    </properties>
+  </persistence-unit>
+</persistence>

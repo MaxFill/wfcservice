@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd"> 
+    
+    <changeSet id="init_data" author="filatov" context="initdata" runOnChange="true">         
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="wfc_attached" schemaName="ilink"/>
+            </not>
+        </preConditions>
+        
+        <createTable tableName="wfc_attached" schemaName="ilink">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true" /> 
+            </column>
+
+            <column name="ticket_id"    type="INT"/>
+            <column name="name"         type="varchar(255)"/>
+            <column name="file_size"    type="BIGINT"/>
+            <column name="date_create"  type="DATETIME"/>
+            <column name="type"         type="varchar(255)"/>
+            <column name="extension"    type="varchar(255)"/>
+            <column name="guid"         type="varchar(255)"/>
+            <column name="author_id"    type="INT"/>
+        </createTable>
+        
+        <createTable tableName="wfc_user_settings" schemaName="ilink">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true" /> 
+            </column>
+            <column name="user_id"    type="INT"/>
+            <column name="filters"    type="TEXT"/>
+            <column name="settings"   type="TEXT"/>            
+        </createTable>
+    
+        <createIndex indexName="IND_TICKET_ID" tableName="wfc_attached" schemaName="ilink">
+            <column name="ticket_id"/>
+        </createIndex>
+    
+        <createIndex indexName="IND_USER_ID" tableName="wfc_user_settings" schemaName="ilink">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+        
+</databaseChangeLog> 
